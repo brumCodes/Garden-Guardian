@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="/assets/logo.png">
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/modais.css">
+    <script src="/js/agenda.js" defer></script>
+    <title>Garden Guardian | Agenda</title>
+</head>
+<body class="garden-app">
+    <header class="app-header">
+        <div class="logo-main">
+            <a href="/" class="header-icon-left" title="Sair para o início">⬅</a>
+            <img src="/assets/logo.png" alt="Logo">
+            <div class="header-icon-right" title="Perfil do Usuário"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div>
+        </div>
+        <nav class="main-nav">
+            <a href="/plantas.html" class="nav-link">MINHAS PLANTAS</a>
+            <a href="/dashboard.html" class="nav-link">DASHBOARD</a>
+            <a href="/agenda.html" class="nav-link active">AGENDA</a>
+        </nav>
+    </header>
+
+    <main class="plants-container agenda-main">
+        <div class="calendar-section">
+            <div class="calendar-header">
+                <h2 id="mesAno">Fevereiro 2025 <span style="font-size: 1.2rem;">🔽</span></h2>
+            </div>
+            
+            <div class="calendar-grid">
+                <div class="weekday">dom</div>
+                <div class="weekday">seg</div>
+                <div class="weekday">ter</div>
+                <div class="weekday">qua</div>
+                <div class="weekday">qui</div>
+                <div class="weekday">sex</div>
+                <div class="weekday">sáb</div>
+
+                <div id="diasCalendario" class="days-container">
+                    <div class="calendar-day">1 <div class="day-content"></div></div>
+                    <div class="calendar-day">2 <div class="day-content"></div></div>
+                    <div class="calendar-day">3 <div class="day-content"></div></div>
+                    <div class="calendar-day">4 <div class="day-content"></div></div>
+                    <div class="calendar-day">5 <div class="day-content"></div></div>
+                    <div class="calendar-day">6 <div class="day-content"></div></div>
+                    <div class="calendar-day">7 <div class="day-content"></div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="agenda-sidebar">
+            <h3 class="sidebar-title">Clique no dia para ver detalhes</h3>
+            
+            <button class="btn-agenda" onclick="abrirModalAtividade('agendar')">
+                <span class="btn-icon-green">+</span> Agendar atividade
+            </button>
+            
+            <button class="btn-agenda" onclick="abrirModalAtividade('registrar')">
+                <span class="btn-icon-green">+</span> Registrar atividade
+            </button>
+            <button class="btn-agenda" onclick="abrirModalPraga()">
+                <div class="btn-icon-red">+</div>
+                <span>Registrar praga</span>
+            </button>
+        </div>
+    </main>
+    <div class="modal-overlay" id="modalAtividade">
+        <div class="modal-box" style="min-height: 450px;">
+            <div class="clip-metal"></div>
+            <button class="close-modal" onclick="fecharModalAtividade()">&times;</button>
+            
+            <h2 class="form-title" id="tituloModalAtividade">Agendar Cuidado</h2>
+            
+            <form class="garden-form" id="formAtividade">
+                <input type="hidden" id="acaoAtividade" name="acao"> 
+
+                <div class="input-group">
+                    <label>Qual Planta?</label>
+                    <select id="plant_id" name="plant_id" required>
+                        <option value="">Carregando plantas...</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label>O que fazer?</label>
+                    <select id="tipo" name="tipo" required>
+                        <option value="rega">💧 Regar</option>
+                        <option value="adubo">🌱 Adubar</option>
+                        <option value="poda">✂️ Podar</option>
+                        <option value="transplante">🪴 Transplantar / Substrato</option>
+                        <option value="pesticida">🛡️ Aplicar Pesticida</option>
+                        <option value="colheita">🧺 Colher</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label id="labelData">Para quando?</label>
+                    <input type="date" id="data_atividade" name="data_atividade" required>
+                </div>
+
+                <div class="form-footer">
+                    <button type="submit" class="btn-solid-modal" id="btnSalvarAtividade">SALVAR</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal-overlay" id="modalDiaDetalhes">
+        <div class="modal-box" style="min-height: 400px; padding: 80px 40px 40px;">
+            <div class="clip-metal"></div>
+            <button class="close-modal" onclick="document.getElementById('modalDiaDetalhes').style.display='none'">&times;</button>
+            
+            <h2 class="form-title" id="tituloModalDia">Atividades do Dia</h2>
+            
+            <div id="listaAtividadesDia" style="display: flex; flex-direction: column; gap: 15px; max-height: 350px; overflow-y: auto; padding-right: 10px;">
+            </div>
+        </div>
+    </div>
+    <div class="modal-overlay" id="modalPraga" style="display: none;">
+        <div class="modal-box">
+            <div class="clip-metal"></div>
+            <button class="close-modal" onclick="fecharModalPraga()">&times;</button>
+            
+            <h2 class="form-title">Registrar Praga</h2>
+            
+            <form class="garden-form" id="formPraga">
+                <div class="input-group">
+                    <label>Qual Planta?</label>
+                    <select id="selectPlantaPraga" required>
+                        <option value="">Selecione...</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label>O que você detectou?</label>
+                    <select id="selectTipoPraga" required>
+                        <option value="Pulgões">Pulgões</option>
+                        <option value="Cochonilhas">Cochonilhas</option>
+                        <option value="Ácaros">Ácaros</option>
+                        <option value="Formigas">Formigas</option>
+                        <option value="Fungos">Fungos</option>
+                        <option value="Outros">Outros...</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label>Data da detecção:</label>
+                    <input type="date" id="dataPraga" required>
+                </div>
+
+                <div class="form-footer">
+                    <button type="submit" class="btn-solid-modal">REGISTRAR</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <footer class="app-footer">
+        <div class="fence-only"></div>
+    </footer>
+</body>
+</html>

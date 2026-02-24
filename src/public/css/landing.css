@@ -1,0 +1,138 @@
+/* ESTILOS DA LANDING PAGE, LOGIN E CADASTRO */
+body {
+    background-color: var(--bg-color);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: var(--text-dark);
+}
+
+.brand-header {
+    position: absolute;
+    top: 40px;
+    left: 50px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-header img { width: 40px; height: auto; }
+.brand-header span { font-weight: 900; font-size: 1.2rem; line-height: 1; color: #000; }
+
+.container { display: flex; width: 85%; max-width: 1100px; justify-content: space-between; align-items: center; margin-top: 40px; }
+.hero { max-width: 480px; }
+.tagline { font-size: 1.6rem; line-height: 1.4; color: var(--text-dark); margin-bottom: 50px; font-weight: 400; text-align: justify; }
+
+.button-group { display: flex; gap: 20px; }
+.btn {
+    padding: 14px 40px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    border: 2.5px solid var(--orange-main);
+}
+
+.btn-outline { background-color: var(--orange-light); color: var(--text-dark); }
+
+/* --- EFEITO DE INVERSÃO AO PASSAR O MOUSE NO CADASTRAR --- */
+/* 1. O botão Cadastrar vira SÓLIDO (imita o Entrar) */
+.btn-outline:hover { 
+    background-color: var(--orange-main); 
+    color: #FFFFFF; 
+    transform: scale(1.1); 
+    box-shadow: 0 10px 25px rgba(244, 162, 97, 0.4);
+    border-color: var(--orange-main);
+}
+
+/* 2. O botão Entrar vira OUTLINE (imita o Cadastrar original) */
+.btn-outline:hover + .btn-solid {
+    background-color: var(--orange-light);
+    color: var(--text-dark);
+    transform: scale(1); /* Volta ao tamanho normal se estiver com zoom */
+    box-shadow: none;
+}
+
+.btn-solid { background-color: var(--orange-main); color: #FFFFFF; }
+.btn-solid:hover { background-color: #ffb170; transform: scale(1.1); box-shadow: 0 10px 25px rgba(244, 162, 97, 0.4); }
+
+.clipboard {
+    background: #FFFFFF; width: 400px; height: 550px; border: 16px solid var(--brown-board);
+    border-radius: 35px; position: relative; padding: 80px 35px; box-shadow: 15px 15px 0px rgba(0, 0, 0, 0.02);
+}
+
+.clip-metal {
+    width: 130px; height: 45px; background: #B3B3B3; position: absolute;
+    top: -30px; left: 50%; transform: translateX(-50%); border-radius: 10px;
+}
+.clip-metal::before {
+    content: ''; position: absolute; width: 24px; height: 24px; background: #999999;
+    border-radius: 50%; top: -15px; left: 50%; transform: translateX(-50%); border: 4px solid var(--bg-color);
+}
+
+.checklist li { display: flex; align-items: center; gap: 15px; margin-bottom: 25px; font-size: 0.9rem; font-weight: bold; color: var(--text-dark); text-transform: uppercase; list-style: none; }
+.circle-check { width: 28px; height: 28px; border: 3px solid var(--green-check); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--green-check); flex-shrink: 0; }
+
+/* Estilos de Formulário (Login/Cadastro) */
+.container-form { display: flex; justify-content: center; align-items: center; width: 100%; margin-top: 60px; }
+.form-title { text-align: center; color: var(--brown-board); font-size: 2rem; margin-bottom: 30px; font-weight: 900; }
+.garden-form { display: flex; flex-direction: column; }
+.input-group { display: flex; flex-direction: column; margin-bottom: 15px; }
+.input-group label { font-weight: bold; font-size: 0.8rem; margin-bottom: 5px; color: var(--brown-board); }
+.input-group input { padding: 12px 15px; border: 2px solid #ddd; border-radius: 10px; outline: none; }
+.input-group input:focus { border-color: var(--orange-main); }
+.form-footer { margin-top: 20px; display: flex; flex-direction: column; align-items: center; gap: 15px; }
+.link-alt { color: var(--brown-board); font-size: 0.8rem; text-decoration: underline; }
+.form-box { height: auto; min-height: 500px; }
+
+/* --- RESPONSIVIDADE (CELULAR) --- */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Empilha um em cima do outro */
+        text-align: center;
+    }
+
+    .hero {
+        max-width: 100%;
+        margin-bottom: 40px;
+    }
+
+    .tagline { text-align: center; } /* Centraliza apenas no celular */
+    .button-group { justify-content: center; }
+}
+
+/* --- RODAPÉ (Igual ao app.css) --- */
+.app-footer {
+    width: 100%;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.fence-only {
+    width: 100%;
+    height: 120px;
+    background-image: url('/assets/rodape.png');
+    background-size: auto 100%;
+    background-repeat: repeat-x;
+    background-position: bottom center;
+}
+
+.app-footer::after {
+    content: 'Garden Guardian';
+    width: 100%;
+    height: 60px;
+    background-color: #FF8F3D;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-weight: bold;
+    font-size: 1.2rem;
+}

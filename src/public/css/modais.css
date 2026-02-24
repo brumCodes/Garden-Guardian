@@ -1,0 +1,246 @@
+/* --- ESTILO DA PRANCHETA (MODAL) --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); 
+    display: none; 
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-box {
+    background: #FFFFFF; 
+    width: 480px; /* Aumentado para não ficar espremido */
+    min-height: 550px; /* Altura mínima para dar respiro */
+    border: 16px solid var(--brown-board);
+    border-radius: 40px; 
+    position: relative; 
+    /* Padding superior de 100px para o título descer bem abaixo do clipe */
+    padding: 100px 45px 50px; 
+    display: flex;
+    flex-direction: column;
+    animation: zoomIn 0.3s ease;
+}
+
+/* Clipe de Metal Cinza */
+.clip-metal {
+    width: 140px; 
+    height: 50px; 
+    background: #B3B3B3; 
+    position: absolute;
+    top: -30px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    border-radius: 12px;
+    z-index: 10;
+}
+
+.clip-metal::before {
+    content: ''; 
+    position: absolute; 
+    width: 26px; 
+    height: 26px; 
+    background: #999999;
+    border-radius: 50%; 
+    top: -15px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    border: 5px solid var(--bg-light); 
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    background: none;
+    border: none;
+    font-size: 2.2rem;
+    color: var(--brown-board);
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Título e Formulário */
+.form-title {
+    text-align: center;
+    margin-bottom: 35px;
+    color: #333;
+    font-size: 1.8rem;
+}
+
+.input-group {
+    margin-bottom: 25px; /* Espaço entre campos */
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-group label {
+    font-weight: 700;
+    color: var(--brown-board);
+    font-size: 1rem;
+}
+
+.input-group input, .input-group select {
+    padding: 14px;
+    border: 2px solid #EBDDC8;
+    border-radius: 12px;
+    font-size: 1rem;
+}
+
+/* Botão de Upload de Foto */
+.btn-upload {
+    background-color: #fcfcfc;
+    border: 2px dashed #EBDDC8;
+    color: var(--brown-board);
+    padding: 15px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: 0.2s;
+}
+
+.btn-upload:hover {
+    background-color: var(--orange-light);
+}
+
+.file-name-hint {
+    font-size: 0.75rem;
+    color: #888;
+    text-align: center;
+    margin-top: 5px;
+}
+
+/* Botão Salvar (Padrão Laranja) */
+.form-footer {
+    margin-top: auto; /* Empurra o botão para o fim da prancheta */
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-solid-modal {
+    background-color: var(--orange-main);
+    color: #FFFFFF;
+    padding: 16px 50px;
+    border-radius: 35px;
+    border: none;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 100%; /* Botão largo para preencher a base */
+}
+
+.btn-solid-modal:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(222, 133, 76, 0.3);
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+/*Histórico*/
+/* Container que ocupa a tela toda */
+.modal-full {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #F2E8D9; /* Cor de fundo idêntica ao seu protótipo */
+    display: none;
+    z-index: 2000;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.modal-full.active {
+    display: flex;
+    opacity: 1;
+}
+
+.full-content {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.main-layout { display: flex; gap: 80px; width: 100%; align-items: flex-start; }
+
+/* Lado da Imagem */
+.visual-side { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 40px; }
+.image-frame img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 1px solid var(--orange-main);
+}
+.leaf-logo img { width: 50px; opacity: 0.8; }
+
+/* Lado das Informações */
+.data-side { flex: 1.2; }
+.plant-big-name { font-size: 3.5rem; font-weight: 300; color: #000; margin: 0; }
+.plant-big-species { font-size: 1.8rem; color: #666; margin-bottom: 30px; }
+
+.emoji-group { display: flex; gap: 15px; font-size: 2.5rem; margin-top: 10px; }
+.emoji { filter: grayscale(1); opacity: 0.2; transition: 0.3s; }
+.emoji.active { filter: grayscale(0); opacity: 1; transform: scale(1.2); }
+
+/* Histórico conforme o desenho */
+.history-section h2 { font-size: 1.5rem; font-weight: 400; margin: 40px 0 20px; color: #000; }
+.history-scroll-box {
+    border: 1.5px solid var(--orange-main);
+    border-radius: 15px;
+    padding: 25px;
+    height: 350px;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.history-container {
+    height: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-right: 10px;
+}
+
+/* Customização da Barra de Rolagem Laranja */
+.history-container::-webkit-scrollbar { width: 8px; }
+.history-container::-webkit-scrollbar-track { background: transparent; }
+.history-container::-webkit-scrollbar-thumb {
+    background: var(--orange-main);
+    border-radius: 10px;
+}
+
+/* Alinhamento dos ícones lado a lado com o texto */
+.history-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+    color: #333;
+}
+
+/* Botão Fechar */
+.close-full {
+    position: absolute; top: 40px; right: 60px;
+    background: none; border: none; font-size: 3rem; color: var(--brown-board); cursor: pointer;
+}

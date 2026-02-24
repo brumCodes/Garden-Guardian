@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garden Guardian | Login</title>
+    <link rel="icon" type="image/png" href="/assets/logo.png">
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/landing.css">
+    <script src="/js/auth.js" defer></script>
+</head>
+<body>
+    <header class="brand-header">
+        <img src="/assets/logo.png" alt="Logo">
+        <span>Garden<br>Guardian</span>
+    </header>
+
+    <main class="container-form">
+        <section class="visual">
+            <div class="clipboard form-box">
+                <div class="clip-metal"></div>
+                <h2 class="form-title">Entrar</h2>
+                
+                <form id="formLogin" class="garden-form">
+                    <div class="input-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="senha">Senha</label>
+                        <input type="password" id="senha" name="senha" required>
+                    </div>
+
+                    <div class="form-footer">
+                        <button type="submit" class="btn btn-solid">ACESSAR</button>
+                        <a href="/cadastro.html" class="link-alt">Criar nova conta</a>
+                        <div id="msgErroLogin" style="color: #E74C3C; font-weight: bold; font-size: 0.9rem; margin-top: 10px; display: none;"></div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

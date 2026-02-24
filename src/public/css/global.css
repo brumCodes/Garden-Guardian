@@ -1,0 +1,18 @@
+/* VARIÁVEIS E CONFIGURAÇÕES QUE TODO O SITE USA */
+:root {
+    --bg-color: #F4EBDD;        
+    --orange-main: #F4A261;     
+    --orange-light: #FCE6D2;    
+    --brown-board: #7D6348;     
+    --text-dark: #333333;       
+    --green-check: #8BC34A;
+    --bg-light: #F2E8D9;
+    --gray-inactive: #999999;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}

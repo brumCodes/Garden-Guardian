@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="/assets/logo.png">
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/landing.css">
+    <script src="/js/auth.js" defer></script>
+    <title>Cadastro</title>
+</head>
+<body>
+    <header class="brand-header">
+        <img src="/assets/logo.png">
+        <span>Garden<br>Guardian</span>
+    </header>
+
+    <main class="container-form">
+        <div class="clipboard">
+            <div class="clip-metal"></div>
+            <h2 class="form-title">Criar Conta</h2>
+            <form class="garden-form" id="formCadastro">
+                <div class="input-group">
+                    <label>Nome</label>
+                    <input type="text" id="nomeCadastro" required>
+                </div>
+                <div class="input-group">
+                    <label>E-mail</label>
+                    <input type="email" id="emailCadastro" required>
+                </div>
+                <div class="input-group">
+                    <label>Senha</label>
+                    <input type="password" id="senhaCadastro" required>
+                </div>
+                <div class="form-footer">
+                    <button type="submit" class="btn btn-solid">CADASTRAR</button>
+                </div>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
