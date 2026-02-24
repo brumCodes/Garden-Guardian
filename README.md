@@ -5,6 +5,8 @@
 ### Resumo
 O **Garden Guardian** é uma aplicação web desenvolvida para auxiliar no gerenciamento e cuidado de plantas domésticas e jardins. O sistema permite que o usuário cadastre suas plantas, mantenha um histórico de cuidados (como rega, adubação, poda), visualize estatísticas de consumo de insumos e monitore a saúde do jardim através de um Dashboard interativo. O objetivo é facilitar a organização da rotina de jardinagem, prevenindo o esquecimento de tarefas essenciais e auxiliando no controle de pragas.
 
+Vídeo de apresentação no youtube: https://youtu.be/SVSvManzlmc
+
 ---
 
 ### 1. Funcionalidades implementadas
